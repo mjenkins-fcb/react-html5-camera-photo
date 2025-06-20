@@ -134,9 +134,7 @@ function Camera (props) {
         errorMsg={cameraStartDisplayError}
       />
       <WhiteFlash isShowWhiteFlash={!isShowVideo} />
-      {this.state.dataUri && (
-        <img style={showHideImgStyle} alt="camera" src={dataUri} />
-      )}
+      {dataUri && <img style={showHideImgStyle} alt="camera" src={dataUri} />}
       <video
         style={videoStyles}
         ref={videoRef}
