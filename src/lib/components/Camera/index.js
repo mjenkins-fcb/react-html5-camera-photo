@@ -32,12 +32,13 @@ function Camera (props) {
 
   let videoRef = useRef(null);
 
-  const [
-    mediaStream,
-    cameraStartError,
-    cameraStopError,
-    getDataUri
-  ] = useLibCameraPhoto(videoRef, props.idealFacingMode, props.idealResolution, props.isMaxResolution);
+  const [mediaStream, cameraStartError, cameraStopError, getDataUri] =
+    useLibCameraPhoto(
+      videoRef,
+      props.idealFacingMode,
+      props.idealResolution,
+      props.isMaxResolution
+    );
 
   useEffect(() => {
     if (mediaStream) {
@@ -53,7 +54,9 @@ function Camera (props) {
 
   useEffect(() => {
     if (cameraStartError) {
-      setCameraStartDisplayError(`${cameraStartError.name} ${cameraStartError.message}`);
+      setCameraStartDisplayError(
+        `${cameraStartError.name} ${cameraStartError.message}`
+      );
       if (typeof props.onCameraError === 'function') {
         props.onCameraError(cameraStartError);
       }
@@ -120,7 +123,9 @@ function Camera (props) {
   let videoStyles = getVideoStyles(isShowVideo, getIsImageMirror());
   let showHideImgStyle = getShowHideStyle(!isShowVideo);
 
-  let classNameFullscreen = props.isFullscreen ? 'react-html5-camera-photo-fullscreen' : '';
+  let classNameFullscreen = props.isFullscreen
+    ? 'react-html5-camera-photo-fullscreen'
+    : '';
   return (
     <div className={'react-html5-camera-photo ' + classNameFullscreen}>
       <DisplayError
@@ -128,14 +133,10 @@ function Camera (props) {
         isDisplayError={props.isDisplayStartCameraError}
         errorMsg={cameraStartDisplayError}
       />
-      <WhiteFlash
-        isShowWhiteFlash={!isShowVideo}
-      />
-      <img
-        style={showHideImgStyle}
-        alt="camera"
-        src={dataUri}
-      />
+      <WhiteFlash isShowWhiteFlash={!isShowVideo} />
+      {this.state.dataUri && (
+        <img style={showHideImgStyle} alt="camera" src={dataUri} />
+      )}
       <video
         style={videoStyles}
         ref={videoRef}
@@ -143,19 +144,12 @@ function Camera (props) {
         muted={true}
         playsInline
       />
-      <CircleButton
-        isClicked={!isShowVideo}
-        onClick={handleTakePhoto}
-      />
+      <CircleButton isClicked={!isShowVideo} onClick={handleTakePhoto} />
     </div>
   );
 }
 
-export {
-  Camera,
-  FACING_MODES,
-  IMAGE_TYPES
-};
+export { Camera, FACING_MODES, IMAGE_TYPES };
 
 export default Camera;
 
