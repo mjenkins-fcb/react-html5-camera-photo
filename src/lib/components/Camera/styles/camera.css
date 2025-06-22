@@ -16,8 +16,9 @@
   margin: 0 auto;
 }
 
-@media(max-width:768px){
-  .react-html5-camera-photo > video, .react-html5-camera-photo > img {
+@media (max-width: 768px) {
+  .react-html5-camera-photo > video,
+  .react-html5-camera-photo > img {
     width: 100%;
   }
   .react-html5-camera-photo > .display-error {
@@ -26,14 +27,15 @@
 }
 
 /* fullscreen enable by props */
-.react-html5-camera-photo-fullscreen > video, .react-html5-camera-photo-fullscreen > img {
+.react-html5-camera-photo-fullscreen > video,
+.react-html5-camera-photo-fullscreen > img {
   width: 100vw;
-  height:100vh;
+  height: 100dvh;
 }
 .react-html5-camera-photo-fullscreen > video {
   object-fit: fill;
 }
 .react-html5-camera-photo-fullscreen > .display-error {
   width: 100vw;
-  height:100vh;
+  height: 100vh;
 }
